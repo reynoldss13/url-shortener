@@ -3,6 +3,7 @@ from DB.db_access import insert_url, get_url
 
 app = Flask(__name__)
 
+# Insert original URL & return shortened URL
 @app.route("/generate", methods=["GET"])
 def generate_url():
     if "url" in request.form:
@@ -15,6 +16,7 @@ def generate_url():
     else:
         return make_response("Error: URL not provided", 400)
 
+# Using the given ID and base URL, return the original URL
 @app.route("/<string:id>", methods=["GET"])
 def get_original_url(id):
     try:

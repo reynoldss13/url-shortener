@@ -4,10 +4,11 @@ conn_string = (
     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
     r'DBQ=DB/url_db.accdb;'
 )
+
 conn = pyodbc.connect(conn_string)
 cursor = conn.cursor()
 
-
+# Validate URL, check if URL already exists, returns ID for generating short URL.
 def insert_url(url):
     if(__validate_url(url)):
         url_check = __get_id(url)
@@ -21,6 +22,7 @@ def insert_url(url):
         return url_check
     return None
 
+# Searches DB for URL with given ID
 def get_url(id):
     select_statement = "SELECT OriginalUrl FROM URls WHERE ID = "+id+";"
     result = cursor.execute(select_statement).fetchval()
@@ -28,6 +30,7 @@ def get_url(id):
         return result
     return None
 
+# Used to check if URL already exists in DB
 def __get_id(url):
     select_statement = "SELECT ID FROM Urls WHERE OriginalUrl = '"+url+"';"
     result = cursor.execute(select_statement).fetchval()
@@ -35,9 +38,11 @@ def __get_id(url):
         return result
     return None
 
+# Validates the URL, returns boolean
 def __validate_url(url):
     return validators.url(url)
 
+# Returns ID of the inserted URL
 def __get_inserted_id(url, insert_date):
     select_statement = "SELECT ID FROM Urls WHERE OriginalUrl = '"+url+"' AND DateCreated = '"+insert_date+"';"
     response = cursor.execute(select_statement).fetchval()
