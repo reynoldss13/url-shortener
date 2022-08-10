@@ -1,0 +1,24 @@
+.body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    font-size: xx-large;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-and-submit {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-input {
+    width:60%;
+    height:25px;
+    margin-right: 6px;
+}
+
