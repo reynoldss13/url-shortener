@@ -9,6 +9,7 @@
 .form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .input-and-submit {
@@ -22,3 +23,6 @@
     margin-right: 6px;
 }
 
+.hidden {
+    display: none;
+}

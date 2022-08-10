@@ -1,5 +1,6 @@
 <div class="body">
   <h1>Welcome to {{title}}</h1>
+  <!-- Input form -->
   <div >
     <form [formGroup]="urlGenerationForm" (ngSubmit)="submit(urlInput.value)" class="form">
       <div>
@@ -11,4 +12,15 @@
       </div> 
     </form>   
   </div>
+
+  <!-- Output -->
+  <form [formGroup]="urlOutputForm" id="output" class="form hidden">
+    <div>
+      <label for="urlOutput">Your mini URL:</label><br/>
+    </div>
+    <div class="input-and-submit">
+      <input #urlOutput class="text-input" type="text" name="urlOutput" id="urlOutput" value="{{generatedUrl}}">
+      <button [ngxClipboard]="urlOutput">Copy to clipboard</button>
+    </div> 
+  </form>
 </div>

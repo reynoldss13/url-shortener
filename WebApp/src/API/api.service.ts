@@ -1,7 +1,8 @@
 // API Service component is used to call the Flask API
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 @Injectable()
 export class APIService {
