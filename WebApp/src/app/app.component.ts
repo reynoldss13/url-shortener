@@ -30,8 +30,4 @@ export class AppComponent {
       alert("Invalid URL!");
     });
   }
-
-  copyLink(urlText:any){
-  
-  }
 }

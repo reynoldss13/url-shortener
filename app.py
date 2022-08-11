@@ -1,6 +1,5 @@
-from flask import Flask, make_response, request, jsonify
+from flask import Flask, make_response, request, jsonify, redirect
 from DB.db_access import insert_url, get_url
-import webbrowser
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -27,8 +26,7 @@ def navigate_to_original_url(id):
     except:
         return make_response("Error: Invalid URL", 200)
     if url is not None:
-        webbrowser.open(url)
-        return
+        return redirect(url)
     else:
         return make_response("Error: ID not found", 404)
 
